@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,4 +19,6 @@ public class Product {
     private double price;
     private String supplierId;
     private String categoryId;
+    private Map<String, Object> additionalFields;
+
 }
