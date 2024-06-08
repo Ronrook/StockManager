@@ -1,4 +1,4 @@
-package com.ronrook.StockManager.domain.ports.in;
+package com.ronrook.StockManager.domain.ports.out;
 
 import com.ronrook.StockManager.domain.model.Product;
 
@@ -8,5 +8,5 @@ public interface ProductRepositoryPort {
     Product save(Product product);
     Product findById(String id);
     List<Product> findAll();
-    void deleteById(String id);
+    boolean deleteById(String id);
 }
