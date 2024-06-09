@@ -1,8 +1,7 @@
 package com.ronrook.StockManager.infrastructure.controllers;
 
-import com.ronrook.StockManager.application.usecases.ProductUseCase;
+import com.ronrook.StockManager.application.ports.in.IProductServicePort;
 import com.ronrook.StockManager.domain.model.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,12 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    @Autowired
-    private ProductUseCase productUseCase;
+
+    private final IProductServicePort productUseCase;
+
+    public ProductController(IProductServicePort productUseCase) {
+        this.productUseCase = productUseCase;
+    }
 
     @PostMapping
     public Product addProduct(@RequestBody Product product) {

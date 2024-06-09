@@ -1,48 +1,48 @@
 package com.ronrook.StockManager.application.services;
 
-import com.ronrook.StockManager.application.usecases.ProductUseCase;
+import com.ronrook.StockManager.application.ports.in.IProductServicePort;
 import com.ronrook.StockManager.domain.model.Product;
-import com.ronrook.StockManager.domain.ports.in.ProductRepository;
+import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 
 @Service
-public class ProductService implements ProductUseCase {
+public class ProductService implements IProductServicePort {
 
-    private final ProductRepository productRepository;
+    private final IProductRepositoryPort productRepositoryPort;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductService(IProductRepositoryPort IProductRepositoryPort) {
+        this.productRepositoryPort = IProductRepositoryPort;
     }
 
     @Override
     public Product addProduct(Product product) {
-        return productRepository.createProduct(product);
+        return productRepositoryPort.createProduct(product);
     }
 
     @Override
     public Product getProduct(String id) {
-        return productRepository.getProduct(id);
+        return productRepositoryPort.getProduct(id);
     }
 
     @Override
     public List<Product> listProducts() {
-        return productRepository.listProducts();
+        return productRepositoryPort.listProducts();
     }
 
     @Override
     public boolean removeProduct(String id) {
-        return productRepository.deleteProduct(id);
+        return productRepositoryPort.deleteProduct(id);
     }
 
     @Override
     public void updateProductQuantity(String id, int quantity) {
-        Product product = productRepository.getProduct(id);
+        Product product = productRepositoryPort.getProduct(id);
         if (product != null) {
             product.setQuantity(quantity);
-            productRepository.createProduct(product);
+            productRepositoryPort.createProduct(product);
         }
     }
 }

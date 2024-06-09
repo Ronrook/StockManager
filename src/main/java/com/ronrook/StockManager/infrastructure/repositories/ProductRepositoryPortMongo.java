@@ -1,7 +1,7 @@
 package com.ronrook.StockManager.infrastructure.repositories;
 
 import com.ronrook.StockManager.domain.model.Product;
-import com.ronrook.StockManager.domain.ports.in.ProductRepository;
+import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
 import com.ronrook.StockManager.infrastructure.entities.ProductMongoEntity;
 import com.ronrook.StockManager.infrastructure.mappers.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
-public class ProductRepositoryMongo implements ProductRepository {
+public class ProductRepositoryPortMongo implements IProductRepositoryPort {
 
     @Autowired
     private MongoProductRepository mongoProductRepository;

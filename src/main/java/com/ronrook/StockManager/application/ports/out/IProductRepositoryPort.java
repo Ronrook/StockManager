@@ -1,11 +1,11 @@
-package com.ronrook.StockManager.domain.ports.in;
+package com.ronrook.StockManager.application.ports.out;
 
 import com.ronrook.StockManager.domain.model.Product;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository {
+public interface IProductRepositoryPort {
 
     Product createProduct(Product product);
     Product getProduct(String id);
