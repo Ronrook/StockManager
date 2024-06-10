@@ -23,8 +23,8 @@ public class ProductRepositoryPortMongo implements IProductRepositoryPort {
 
     @Override
     public Product createProduct(Product product) {
-        ProductMongoEntity entity = this.productMapper.domainToEntity (product);
-        ProductMongoEntity savedEntity = mongoProductRepository.save(entity);
+        var entity = this.productMapper.domainToEntity (product);
+        var savedEntity = mongoProductRepository.save(entity);
         return this.productMapper.entityToDomain(savedEntity);
     }
 

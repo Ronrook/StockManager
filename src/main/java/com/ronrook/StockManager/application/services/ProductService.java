@@ -7,7 +7,6 @@ import com.ronrook.StockManager.application.ports.in.IProductServicePort;
 import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 

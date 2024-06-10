@@ -21,7 +21,6 @@ public class ProductController {
 
     @PostMapping
     public ProductResponseDTO addProduct(@RequestBody CreateProductDTO product) {
-        System.out.println("product = " + product);
         return productUseCase.addProduct(product);
     }
 
