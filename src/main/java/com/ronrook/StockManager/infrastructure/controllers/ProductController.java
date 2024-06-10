@@ -1,6 +1,8 @@
 package com.ronrook.StockManager.infrastructure.controllers;
 
+import com.ronrook.StockManager.application.ports.in.DTO.CreateProductDTO;
 import com.ronrook.StockManager.application.ports.in.IProductServicePort;
+import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +20,18 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product addProduct(@RequestBody Product product) {
+    public ProductResponseDTO addProduct(@RequestBody CreateProductDTO product) {
+        System.out.println("product = " + product);
         return productUseCase.addProduct(product);
     }
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable String id) {
+    public ProductResponseDTO getProduct(@PathVariable String id) {
         return productUseCase.getProduct(id);
     }
 
     @GetMapping
-    public List<Product> listProducts() {
+    public List<ProductResponseDTO> listProducts() {
         return productUseCase.listProducts();
     }
 

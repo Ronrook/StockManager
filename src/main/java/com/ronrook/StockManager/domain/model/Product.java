@@ -21,4 +21,15 @@ public class Product {
     private String categoryId;
     private Map<String, Object> additionalFields;
 
+    // Constructor que excluye 'additionalFields'
+    public Product(String id, String name, String description, int quantity, double price, String supplierId, String categoryId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+        this.supplierId = supplierId;
+        this.categoryId = categoryId;
+    }
+
 }

@@ -1,13 +1,15 @@
 package com.ronrook.StockManager.application.ports.in;
 
+import com.ronrook.StockManager.application.ports.in.DTO.CreateProductDTO;
+import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 
 import java.util.List;
 
 public interface IProductServicePort {
-    Product addProduct(Product product);
-    Product getProduct(String id);
-    List<Product> listProducts();
+    ProductResponseDTO addProduct(CreateProductDTO product);
+    ProductResponseDTO getProduct(String id);
+    List<ProductResponseDTO> listProducts();
     boolean removeProduct(String id);
     void updateProductQuantity(String id, int quantity);
 }

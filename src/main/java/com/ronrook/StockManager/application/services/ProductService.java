@@ -1,35 +1,59 @@
 package com.ronrook.StockManager.application.services;
 
+import com.ronrook.StockManager.application.mappers.ProductRequestMapper;
+import com.ronrook.StockManager.application.mappers.ProductResponseMapper;
+import com.ronrook.StockManager.application.ports.in.DTO.CreateProductDTO;
 import com.ronrook.StockManager.application.ports.in.IProductServicePort;
+import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements IProductServicePort {
 
     private final IProductRepositoryPort productRepositoryPort;
+    private final ProductRequestMapper productRequestMapper;
+    private final ProductResponseMapper productResponseMapper;
 
-    public ProductService(IProductRepositoryPort IProductRepositoryPort) {
-        this.productRepositoryPort = IProductRepositoryPort;
+
+    public ProductService(IProductRepositoryPort productRepositoryPort,
+                          ProductRequestMapper productRequestMapper,
+                          ProductResponseMapper productResponseMapper) {
+        this.productRepositoryPort = productRepositoryPort;
+        this.productRequestMapper = productRequestMapper;
+        this.productResponseMapper = productResponseMapper;
     }
 
     @Override
-    public Product addProduct(Product product) {
-        return productRepositoryPort.createProduct(product);
+    public ProductResponseDTO addProduct(CreateProductDTO request) {
+        var productToCreate = productRequestMapper.toDomain(request);
+
+        var productCreated =   productRepositoryPort.createProduct(productToCreate);
+
+        return  productResponseMapper.toDto(productCreated);
     }
 
     @Override
-    public Product getProduct(String id) {
-        return productRepositoryPort.getProduct(id);
+    public ProductResponseDTO getProduct(String id) {
+        var product = productRepositoryPort.getProduct(id);
+
+        return productResponseMapper.toDto(product);
     }
 
     @Override
-    public List<Product> listProducts() {
-        return productRepositoryPort.listProducts();
+    public List<ProductResponseDTO> listProducts() {
+
+        var products = productRepositoryPort.listProducts();
+        return products
+                .stream()
+                .map(productResponseMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override

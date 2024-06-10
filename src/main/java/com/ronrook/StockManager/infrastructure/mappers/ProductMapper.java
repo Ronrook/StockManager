@@ -8,35 +8,21 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import org.mapstruct.*;
-
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
 
-        @Mappings({
-                @Mapping(source = "id", target = "id"),
-                @Mapping(source = "name", target = "name"),
-                @Mapping(source = "quantity", target = "quantity"),
-                @Mapping(source = "description", target = "description"),
-                @Mapping(source = "additionalFields", target = "additionalFields")
-        })
-        Product entityToDomain(ProductMongoEntity entity);
+
+        @Mapping(source = "id", target = "id")
+        @Mapping(source = "name", target = "name")
+        @Mapping(source = "quantity", target = "quantity")
+        @Mapping(source = "description", target = "description")
+        @Mapping(source = "additionalFields", target = "additionalFields")
+        ProductMongoEntity domainToEntity(Product domain);
 
         @InheritInverseConfiguration
         @Mapping(target = "additionalFields", ignore = true) // Ignorar el campo adicionalFields si no está presente
-        ProductMongoEntity domainToEntity(Product domain);
+        Product entityToDomain(ProductMongoEntity entity);
 
-        // Método para manejar manualmente la conversión inversa
-        default ProductMongoEntity domainToEntityWithAdditionalFields(Product domain) {
-                ProductMongoEntity entity = new ProductMongoEntity();
-                entity.setId(domain.getId());
-                entity.setName(domain.getName());
-                entity.setQuantity(domain.getQuantity());
-                entity.setDescription(domain.getDescription());
-                if (domain.getAdditionalFields() != null && !domain.getAdditionalFields().isEmpty()) {
-                        entity.setAdditionalFields(domain.getAdditionalFields());
-                }
-                return entity;
-        }
+
 }
 
