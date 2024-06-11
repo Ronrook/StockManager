@@ -1,7 +1,6 @@
 package com.ronrook.StockManager.infrastructure.mappers;
 
 
-import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 import com.ronrook.StockManager.infrastructure.entities.ProductMongoEntity;
 import org.mapstruct.InheritInverseConfiguration;
