@@ -60,10 +60,10 @@ public class ProductService implements IProductServicePort {
     }
 
     @Override
-    public void updateProductQuantity(String id, int quantity) {
+    public void updateProductQuantity(String id, Integer quantity) {
         Product product = productRepositoryPort.getProduct(id);
         if (product != null) {
-            product.setQuantity(quantity);
+            product.setStandardQuantity(quantity);
             productRepositoryPort.createProduct(product);
         }
     }

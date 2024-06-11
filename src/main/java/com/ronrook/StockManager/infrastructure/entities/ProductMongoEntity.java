@@ -17,9 +17,9 @@ public class ProductMongoEntity {
     @Id
     private String id;
     private String name;
-    private double price;
-    private int quantity;
     private String description;
+    private Integer standardQuantity;
+    private Double price;
     private String supplierId;
     private String categoryId;
     private Map<String, Object> additionalFields;

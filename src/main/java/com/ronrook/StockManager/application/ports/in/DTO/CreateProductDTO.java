@@ -13,8 +13,8 @@ public class CreateProductDTO {
     private String id;
     private String name;
     private String description;
-    private double price;
-    private int quantity;
+    private Integer standardQuantity;
+    private Double price;
     private String supplierId;
     private String categoryId;
     private Map<String, Object> additionalFields;
