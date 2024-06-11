@@ -1,20 +1,23 @@
-package com.ronrook.StockManager.application.ports.out;
+package com.ronrook.StockManager.application.ports.in.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductResponseDTO {
-
+public class ProductRequest {
     private String id;
     private String name;
     private String description;
     private Integer standardQuantity;
     private Double price;
-    private String categoryId;
     private String supplierId;
+    private String categoryId;
+    private Map<String, Object> additionalFields;
+
 
 }

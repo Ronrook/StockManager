@@ -4,20 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateProductDTO {
+public class ProductResponse {
+
     private String id;
     private String name;
     private String description;
     private Integer standardQuantity;
     private Double price;
-    private String supplierId;
     private String categoryId;
-    private Map<String, Object> additionalFields;
-
+    private String supplierId;
 
 }
