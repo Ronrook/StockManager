@@ -18,6 +18,4 @@ public class Product {
     private String supplierId;
     private String categoryId;
     private Map<String, Object> additionalFields;
-
-
 }

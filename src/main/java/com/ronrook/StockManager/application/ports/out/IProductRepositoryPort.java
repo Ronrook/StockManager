@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface IProductRepositoryPort {
 
     Product createProduct(Product product);
-    Product getProduct(String id);
-    List<Product> listProducts();
-    boolean deleteProduct(String id);
+    Product findById(String id);
+    List<Product> findAll();
+    boolean deleteById(String id);
     Optional<Product> updateProductQuantity(String id, int quantity);
 }
