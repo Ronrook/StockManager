@@ -1,6 +1,7 @@
-package com.ronrook.StockManager.application.ports.out;
+package com.ronrook.StockManager.application.ports.in.DTO;
 
 
+import com.ronrook.StockManager.application.ports.in.DTO.ProductResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +12,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductResponseWithAdditionalFields extends ProductResponseDTO {
+public class ProductResponseWithAdditionalFields extends ProductResponse {
     private Map<String, Object> additionalFields;
 }
