@@ -8,10 +8,8 @@ import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
 import com.ronrook.StockManager.domain.model.Product;
 import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ProductService implements IProductServicePort {
@@ -49,10 +47,11 @@ public class ProductService implements IProductServicePort {
     public List<ProductResponseDTO> listProducts() {
 
         var products = productRepositoryPort.listProducts();
+
         return products
                 .stream()
                 .map(productResponseMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override

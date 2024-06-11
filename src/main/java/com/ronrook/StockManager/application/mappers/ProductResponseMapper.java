@@ -18,11 +18,8 @@ public record ProductResponseMapper(@Autowired ModelMapper modelMapper) {
             return modelMapper.map(
                     domain, ProductResponseWithAdditionalFields.class);
         }
-
         return productResponse;
     }
-
-
 }
 
 

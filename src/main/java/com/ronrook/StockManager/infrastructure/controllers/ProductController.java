@@ -3,7 +3,6 @@ package com.ronrook.StockManager.infrastructure.controllers;
 import com.ronrook.StockManager.application.ports.in.DTO.CreateProductDTO;
 import com.ronrook.StockManager.application.ports.in.IProductServicePort;
 import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
-import com.ronrook.StockManager.domain.model.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
