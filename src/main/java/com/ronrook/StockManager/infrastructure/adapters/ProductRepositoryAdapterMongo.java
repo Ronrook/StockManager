@@ -1,7 +1,8 @@
-package com.ronrook.StockManager.infrastructure.repositories;
+package com.ronrook.StockManager.infrastructure.adapters;
 
 import com.ronrook.StockManager.domain.model.Product;
 import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
+import com.ronrook.StockManager.infrastructure.repositories.MongoProductRepository;
 import com.ronrook.StockManager.infrastructure.mappers.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,14 +28,14 @@ public class ProductRepositoryAdapterMongo implements IProductRepositoryPort {
     }
 
     @Override
-    public Product getProduct(String id) {
+    public Product findById(String id) {
         return mongoProductRepository.findById(id)
                 .map(this.productMapper::entityToDomain)
                 .orElse(null);
     }
 
     @Override
-    public List<Product> listProducts() {
+    public List<Product> findAll() {
         return mongoProductRepository.findAll()
                 .stream()
                 .map(this.productMapper::entityToDomain)
@@ -42,7 +43,7 @@ public class ProductRepositoryAdapterMongo implements IProductRepositoryPort {
     }
 
     @Override
-    public boolean deleteProduct(String id) {
+    public boolean deleteById(String id) {
         if (mongoProductRepository.existsById(id)) {
             mongoProductRepository.deleteById(id);
             return true;
