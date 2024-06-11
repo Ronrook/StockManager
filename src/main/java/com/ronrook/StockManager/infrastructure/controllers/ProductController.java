@@ -1,8 +1,8 @@
 package com.ronrook.StockManager.infrastructure.controllers;
 
-import com.ronrook.StockManager.application.ports.in.DTO.CreateProductDTO;
+import com.ronrook.StockManager.application.ports.in.DTO.ProductRequest;
 import com.ronrook.StockManager.application.ports.in.IProductServicePort;
-import com.ronrook.StockManager.application.ports.out.ProductResponseDTO;
+import com.ronrook.StockManager.application.ports.in.DTO.ProductResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,34 +12,34 @@ import java.util.List;
 public class ProductController {
 
 
-    private final IProductServicePort productUseCase;
+    private final IProductServicePort productService;
 
-    public ProductController(IProductServicePort productUseCase) {
-        this.productUseCase = productUseCase;
+    public ProductController(IProductServicePort productService) {
+        this.productService = productService;
     }
 
     @PostMapping
-    public ProductResponseDTO addProduct(@RequestBody CreateProductDTO product) {
-        return productUseCase.addProduct(product);
+    public ProductResponse addProduct(@RequestBody ProductRequest product) {
+        return productService.addProduct(product);
     }
 
     @GetMapping("/{id}")
-    public ProductResponseDTO getProduct(@PathVariable String id) {
-        return productUseCase.getProduct(id);
+    public ProductResponse getProduct(@PathVariable String id) {
+        return productService.getProduct(id);
     }
 
     @GetMapping
-    public List<ProductResponseDTO> listProducts() {
-        return productUseCase.listProducts();
+    public List<ProductResponse> listProducts() {
+        return productService.listProducts();
     }
 
     @DeleteMapping("/{id}")
     public void removeProduct(@PathVariable String id) {
-        productUseCase.removeProduct(id);
+        productService.removeProduct(id);
     }
 
     @PutMapping("/{id}/quantity")
     public void updateProductQuantity(@PathVariable String id, @RequestParam int quantity) {
-        productUseCase.updateProductQuantity(id, quantity);
+        productService.updateProductQuantity(id, quantity);
     }
 }
