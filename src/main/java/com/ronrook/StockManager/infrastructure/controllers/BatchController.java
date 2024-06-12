@@ -37,8 +37,8 @@ public class BatchController {
         return batchService.removeBatch(id);
     }
 
-    @PutMapping("/{id}/quantity")
-    public void updateBatchQuantity(@PathVariable String id, @RequestParam int quantity) {
+    @PutMapping("/{id}/{quantity}")
+    public void updateBatchQuantity(@PathVariable String id, @PathVariable int quantity) {
         batchService.updateBatchQuantity(id, quantity);
     }
 }

@@ -1,6 +1,6 @@
 package com.ronrook.StockManager.infrastructure.adapters;
 
-import com.ronrook.StockManager.application.ports.out.BatchRepositoryPort;
+import com.ronrook.StockManager.application.ports.out.IBatchRepositoryPort;
 import com.ronrook.StockManager.application.ports.out.IProductRepositoryPort;
 import com.ronrook.StockManager.domain.model.Batch;
 import com.ronrook.StockManager.domain.model.Product;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class BatchRepositoryMongoAdapter implements BatchRepositoryPort {
+public class BatchRepositoryMongoAdapter implements IBatchRepositoryPort {
 
 
     private final IMongoBatchRepository mongoBatchRepository;

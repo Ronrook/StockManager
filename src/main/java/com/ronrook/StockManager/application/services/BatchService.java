@@ -4,7 +4,8 @@ import com.ronrook.StockManager.application.mappers.BatchMapper;
 import com.ronrook.StockManager.application.ports.in.DTO.BatchRequest;
 import com.ronrook.StockManager.application.ports.in.DTO.BatchResponse;
 import com.ronrook.StockManager.application.ports.in.IBatchServicePort;
-import com.ronrook.StockManager.application.ports.out.BatchRepositoryPort;
+import com.ronrook.StockManager.application.ports.out.IBatchRepositoryPort;
+import com.ronrook.StockManager.application.ports.out.INotificationServicePort;
 import com.ronrook.StockManager.domain.model.Batch;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,15 @@ import java.util.List;
 @Service
 public class BatchService implements IBatchServicePort{
 
-    private final BatchRepositoryPort batchRepositoryPort;
+    private final IBatchRepositoryPort batchRepositoryPort;
+    private final INotificationServicePort notificationService;
     private final BatchMapper batchMapper;
 
-    public BatchService(BatchRepositoryPort batchRepositoryPort, BatchMapper batchMapper) {
+    public BatchService(IBatchRepositoryPort batchRepositoryPort,
+                        INotificationServicePort notificationService,
+                        BatchMapper batchMapper) {
         this.batchRepositoryPort = batchRepositoryPort;
+        this.notificationService = notificationService;
         this.batchMapper = batchMapper;
     }
 
@@ -55,6 +60,9 @@ public class BatchService implements IBatchServicePort{
         if (batch != null) {
             batch.setCurrentQuantity(quantity);
             batchRepositoryPort.save(batch);
+            if (batch.getCurrentQuantity() == 5) {
+                notificationService.sendNotification("Batch with ID " + id + " has a current quantity of 10.");
+            }
         }
     }
 }
