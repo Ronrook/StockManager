@@ -1,5 +1,6 @@
 package com.ronrook.StockManager.infrastructure.entities;
 
+import com.ronrook.StockManager.domain.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class BatchMongoEntity {
     @Id
     private String id;
     private Date batchDate;
-    private String productId;
+    private Product product;
     private Integer initialQuantity;
     private Integer currentQuantity;
     private String location;
