@@ -13,7 +13,7 @@ public class BatchResponse {
     
     private String id;
     private Date batchDate;
-    private String productId;
+    private ProductBatchResponse product;
     private Integer  initialQuantity;
     private Integer currentQuantity;
     private String location;
