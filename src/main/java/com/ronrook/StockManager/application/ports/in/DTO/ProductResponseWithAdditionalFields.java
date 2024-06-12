@@ -1,7 +1,5 @@
 package com.ronrook.StockManager.application.ports.in.DTO;
 
-
-import com.ronrook.StockManager.application.ports.in.DTO.ProductResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
