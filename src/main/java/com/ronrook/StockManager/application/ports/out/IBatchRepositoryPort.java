@@ -4,7 +4,7 @@ import com.ronrook.StockManager.domain.model.Batch;
 
 import java.util.List;
 
-public interface BatchRepositoryPort {
+public interface IBatchRepositoryPort {
     Batch save(Batch batch);
     Batch findById(String id);
     List<Batch> findAll();
